@@ -1,106 +1,279 @@
-/* Global Styles */
+/* Global Styles (apply to all pages) */
 body {
-    background-color: #121212;
-    color: #fff;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light grey text for readability */
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    padding-top: 70px; 
 }
 
-/* Main container for bike details */
+/* Consistent Dark Footer Style */
+footer {
+    background-color: #1e1e1e;
+    color: #b5b5b5;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px; /* This might be less relevant if flexbox is pushing it down */
+    border-top: 1px solid #333;
+    position: relative; /* Good default for non-sticky footers */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* General Heading Styles (if not overridden by Bootstrap) */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* White headings */
+}
+
+/* Styles for Main Ranking Page (index.html) specific elements if needed */
+/* Most index.html specific styles are handled by Bootstrap and inline styles in index.html */
+/* For example, .bike-info-container in index.html has its own background */
+
+/*
+   =========================================================================
+   Styles primarily for Bike Detail Page (e.g., bikers-detail.html)
+   These classes are not expected to be on index.html's main ranking table.
+   =========================================================================
+*/
 .bike-detail-container {
     width: 90%;
     max-width: 1200px;
     margin: 40px auto;
-    padding: 20px;
-    background-color: #1e1e1e;
+    padding: 30px; /* Increased padding */
+    background-color: #1e1e1e; /* Slightly lighter dark shade for content area */
     border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
 }
 
-/* Header Section */
 .bike-detail-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
+    padding-bottom: 20px; /* Added padding */
+    border-bottom: 1px solid #333; /* Separator line */
 }
 
 .bike-title h1 {
-    font-size: 3em;
+    font-size: 2.8em; /* Slightly adjusted font size */
     margin: 0;
     color: #f8f8f8;
 }
 
-.bike-image {
+.bike-image { /* This class is likely for the bike itself on the detail page */
     width: 300px;
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
+    border: 3px solid #333; /* Added border */
 }
 
-/* Left column (key details) */
+/* For a potential layout on the detail page */
+.detail-columns-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px; /* Space between columns */
+}
+
 .left-column, .right-column {
     flex: 1;
-    padding: 20px;
+    min-width: 300px; /* Minimum width before wrapping */
+    /* padding: 20px; -- Removed, padding is on inner elements */
 }
 
 .key-feature, .overall-score, .price, .description, .specifications {
-    background-color: #2a2a2a;
+    background-color: #2a2a2a; /* Darker elements within the container */
     border-radius: 8px;
-    margin-bottom: 15px;
-    padding: 15px;
+    margin-bottom: 20px; /* Increased margin */
+    padding: 20px; /* Increased padding */
 }
 
-h3 {
-    color: #e03e3e;
-    margin-bottom: 10px;
+.key-feature h3, .overall-score h3, .price h3, .description h3, .specifications h3 {
+    color: #e03e3e; /* Accent color for subheadings */
+    margin-top: 0; /* Remove default top margin for h3 */
+    margin-bottom: 15px; /* Spacing below subheading */
+    padding-bottom: 10px; /* Spacing */
+    border-bottom: 1px solid #444; /* Separator for subheadings */
 }
 
-/* Button */
+/* Button for detail page */
 .back-to-rankings {
+    display: inline-block; /* Proper button behavior */
     background-color: #e03e3e;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Adjusted padding */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.1em;
-    transition: background-color 0.3s;
+    text-decoration: none; /* If used as an anchor */
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px; /* Spacing above the button */
 }
 
 .back-to-rankings:hover {
     background-color: #d12c2c;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
-/* Text for descriptions */
-.biography, .additional-features {
-    margin-bottom: 30px;
-}
-
+/* Text styling for detail page */
 .biography p, .additional-features ul {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Adjusted for readability */
     color: #b5b5b5;
+    line-height: 1.6; /* Improved line spacing */
 }
 
-/* Mobile responsiveness */
+.additional-features ul {
+    list-style-type: disc; /* Standard bullet points */
+    padding-left: 20px; /* Indentation for list */
+}
+
+/* Video will be blurred and fixed */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px; /* Adjust height as needed */
+    z-index: -1; /* Ensures video is in the background */
+    overflow: hidden; /* Hide parts of video that extend beyond container */
+}
+
+.video-container video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(5px); /* Blur effect */
+    opacity: 0.7; /* Slight transparency */
+}
+
+/* Transparent background for the table container */
+.bike-info-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
+    padding: 30px;
+    color: white;
+    border-radius: 10px;
+    z-index: 1; /* Ensure it's above the video */
+    margin-top: 300px; /* Pushes it down below the video area, adjust as needed */
+}
+
+/* Mobile responsiveness for Detail Page */
 @media (max-width: 768px) {
+    body {
+        padding-top: 56px; /* Adjust for potentially smaller navbar on mobile */
+    }
+
     .bike-detail-container {
-        width: 100%;
-        padding: 15px;
+        width: 95%; /* Slightly more width on mobile */
+        padding: 20px;
+        margin-top: 20px;
     }
 
     .bike-detail-header {
         flex-direction: column;
         align-items: center;
+        text-align: center; /* Center title on mobile */
     }
 
     .bike-title h1 {
-        font-size: 2.5em;
+        font-size: 2.2em; /* Adjust for mobile */
+        margin-bottom: 15px; /* Space between title and image */
     }
 
     .bike-image {
-        width: 250px;
-        height: 250px;
+        width: 100%; /* Full width image container */
+        max-width: 280px; /* Max width for the image */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 20px; /* Space below image */
+    }
+
+    .detail-columns-wrapper {
+        flex-direction: column; /* Stack columns on mobile */
+        gap: 0; /* Remove gap when stacked, margin is on elements */
+    }
+
+    .left-column, .right-column {
+        min-width: 100%; /* Full width for columns on mobile */
+        padding: 0; /* Reset padding, handled by inner elements */
+    }
+
+    .key-feature, .overall-score, .price, .description, .specifications {
+        padding: 15px;
+    }
+
+    .back-to-rankings {
+        width: 100%; /* Full width button on mobile */
+        text-align: center;
+        padding: 15px;
+    }
+
+    /* Styles for Media Showcase in Hero Content */
+    .media-showcase {
+         margin-top: 35px;
+    }
+    .media-showcase h4 {
+         margin-bottom: 20px;
+        color: #f0f0f0;
+        font-size: 1.4rem; /* Slightly larger heading */
+        font-weight: 500;
+    }
+
+    .media-item {
+        display: block;
+        position: relative; /* For play icon positioning */
+        overflow: hidden; /* Ensures rounded corners clip the image correctly */
+        border-radius: 8px; /* Match thumbnail rounding */
+    }
+
+    .media-thumbnail {
+        border: 2px solid #777; /* Slightly more prominent border */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        aspect-ratio: 16 / 10; /* Maintain aspect ratio for thumbnails */
+        object-fit: cover;
+    }
+
+    .media-item:hover .media-thumbnail {
+        transform: scale(1.08); /* Slightly larger scale on hover */
+        box-shadow: 0 0 20px rgba(224, 62, 62, 0.6); /* Accent color glow */
+    }
+
+    .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem; /* Adjust size as needed */
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+        pointer-events: none;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+    .media-item:hover .play-icon {
+        opacity: 1;
+    }
+
+    /* Styling for Modals */
+    .modal-content.bg-dark .modal-body img,
+    .modal-content.bg-dark .modal-body video {
+        max-height: 80vh;
+        object-fit: contain; /* Ensures the whole image/video is visible */
+    }
+
+    .btn-close-white { /* Ensure Bootstrap 5's white close button is used */
+        filter: none; /* Reset filter if one was globally applied */
+    }
+
+    .modal-header.border-secondary {
+        border-bottom-color: #444 !important; /* Darker border for modal header */
     }
 }
