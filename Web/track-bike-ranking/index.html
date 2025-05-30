@@ -7,109 +7,27 @@
     <title>Reaper Crit - Welcome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Homepage specific styles */
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow-x: hidden; /* Prevent horizontal scrollbar */
-        }
+    </head>
 
-        .homepage-hero {
-            position: relative;
-            height: 100vh; /* Full viewport height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden; /* Ensures video doesn't cause scrollbars if slightly larger */
-        }
+<body class="homepage-body">
 
-        .homepage-video-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -10;
-            transform: translate(-50%, -50%);
-            background-size: cover;
-            filter: brightness(0.7) blur(2px); /* Slightly darken and blur video for text readability */
-        }
-
-        .hero-content {
-            position: relative; /* To ensure it's above the video pseudo-element */
-            z-index: 1;
-            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay for text */
-            padding: 40px;
-            border-radius: 10px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-        }
-
-        .hero-content .btn-primary {
-            font-size: 1.2rem;
-            padding: 10px 30px;
-            background-color: #e03e3e; /* Using accent color from your style.css */
-            border-color: #e03e3e;
-        }
-         .hero-content .btn-primary:hover {
-            background-color: #d12c2c;
-            border-color: #d12c2c;
-        }
-
-        /* Adjust body padding from style.css for homepage as navbar might be different or overlayed */
-        body {
-            padding-top: 0; /* Override style.css padding-top for this full-page hero */
-        }
-        /* Ensure navbar is on top */
-        .navbar {
-            z-index: 10;
-        }
-
-        /* Footer adjustments for homepage */
-        footer.homepage-footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: rgba(0,0,0,0.6); /* Transparent footer */
-            z-index: 5; /* Above video, below content if it overlaps */
-        }
-
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent" id="mainNavHomepage">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="img/logo/1111.png" width="120" alt="Reaper Crit Logo"> Reaper Crit
+                <img src="img/logo/1111.png" width="110" alt="Reaper Crit Logo">
+                Reaper Crit
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavHomepage"
-                aria-controls="navbarNavHomepage" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavContent"
+                aria-controls="navbarNavContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavHomepage">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse" id="navbarNavContent">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="leaderboard.html">Rankings</a>
+                        <a class="nav-link" href="leaderboard.html">Leaderboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="season.html">Season</a>
@@ -131,24 +49,24 @@
             <div class="media-showcase mt-4">
                 <h4 class="mb-3">Explore Our Media</h4>
                 <div class="row justify-content-center">
-                    <div class="col-lg-3 col-md-4 col-6 mb-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#photoModal1" class="media-item">
-                            <img src="img/placeholder/photo1_thumb.jpg" alt="Crit Action Photo" class="img-fluid rounded media-thumbnail">
+                            <img src="img/placeholder/photo1_thumb.jpg" alt="Crit Action Photo" class="img-fluid media-thumbnail">
                         </a>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-6 mb-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal1" class="media-item">
-                            <img src="img/placeholder/video1_thumb.jpg" alt="Race Highlight Video Thumbnail" class="img-fluid rounded media-thumbnail">
+                            <img src="img/placeholder/video1_thumb.jpg" alt="Race Highlight Video Thumbnail" class="img-fluid media-thumbnail">
                             <span class="play-icon">&#9658;</span>
                         </a>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-6 mb-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
                          <a href="#" data-bs-toggle="modal" data-bs-target="#photoModal2" class="media-item">
-                            <img src="img/placeholder/photo2_thumb.jpg" alt="Podium Finish Photo" class="img-fluid rounded media-thumbnail">
+                            <img src="img/placeholder/photo2_thumb.jpg" alt="Podium Finish Photo" class="img-fluid media-thumbnail">
                         </a>
                     </div>
-                    </div>
-                <a href="gallery.html" class="btn btn-outline-light mt-3">View Full Gallery</a>
+                </div>
+                <a href="gallery.html" class="btn btn-outline-light mt-3 btn-outline-light-custom">View Full Gallery</a>
             </div>
         </div>
     </div>
@@ -161,10 +79,10 @@
 
     <div class="modal fade" id="photoModal1" tabindex="-1" aria-labelledby="photoModal1Label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-header border-secondary">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title" id="photoModal1Label">Crit Action</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0 text-center">
                     <img src="img/placeholder/photo1_large.jpg" alt="Crit Action Photo Large" class="img-fluid">
@@ -172,29 +90,27 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="videoModal1" tabindex="-1" aria-labelledby="videoModal1Label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-header border-secondary">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title" id="videoModal1Label">Race Highlight</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
                     <div class="ratio ratio-16x9">
-                        <video src="img/placeholder/video1.mp4" controls autoplay muted class="w-100"></video> {/* Autoplay muted for better UX */}
+                        <video src="img/placeholder/video1.mp4" controls autoplay muted class="w-100"></video>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="photoModal2" tabindex="-1" aria-labelledby="photoModal2Label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                 <div class="modal-header border-secondary">
+            <div class="modal-content">
+                 <div class="modal-header">
                     <h5 class="modal-title" id="photoModal2Label">Podium Finish</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0 text-center">
                     <img src="img/placeholder/photo2_large.jpg" alt="Podium Finish Photo Large" class="img-fluid">
@@ -207,15 +123,14 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Script to make navbar less transparent on scroll
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
+            const navbar = document.getElementById('mainNavHomepage');
             if (window.scrollY > 50) {
                 navbar.classList.remove('bg-transparent');
-                navbar.classList.add('bg-dark');
+                navbar.classList.add('bg-dark-scrolled');
             } else {
                 navbar.classList.add('bg-transparent');
-                navbar.classList.remove('bg-dark');
+                navbar.classList.remove('bg-dark-scrolled');
             }
         });
     </script>

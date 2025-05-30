@@ -1,147 +1,241 @@
 /* Global Styles (apply to all pages) */
+html {
+    height: 100%;
+}
+
 body {
     background-color: #121212; /* Dark background */
     color: #e0e0e0; /* Light grey text for readability */
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding-top: 70px; 
+    padding-top: 70px; /* Default padding for fixed navbar (adjust if navbar height changes) */
+    display: flex; /* Used for sticky footer on content pages */
+    flex-direction: column; /* Used for sticky footer */
+    min-height: 100vh; /* Used for sticky footer */
 }
 
-/* Consistent Dark Footer Style */
+/* Wrapper for main content on pages with sticky footer */
+.page-content-wrapper {
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* Consistent Footer Style (Base for all pages) */
 footer {
-    background-color: #1e1e1e;
     color: #b5b5b5;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px; /* This might be less relevant if flexbox is pushing it down */
     border-top: 1px solid #333;
-    position: relative; /* Good default for non-sticky footers */
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
 }
 
 footer p {
     margin: 0;
 }
 
-/* General Heading Styles (if not overridden by Bootstrap) */
-h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* White headings */
+footer.styled-footer { /* For content pages with sticky footer */
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* Styles for Main Ranking Page (index.html) specific elements if needed */
-/* Most index.html specific styles are handled by Bootstrap and inline styles in index.html */
-/* For example, .bike-info-container in index.html has its own background */
+footer.homepage-footer { /* For homepage absolute footer */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+/* General Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+.page-main-title {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 2.8em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
 
 /*
    =========================================================================
-   Styles primarily for Bike Detail Page (e.g., bikers-detail.html)
-   These classes are not expected to be on index.html's main ranking table.
+   Homepage Specific Styles
    =========================================================================
 */
-.bike-detail-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 30px; /* Increased padding */
-    background-color: #1e1e1e; /* Slightly lighter dark shade for content area */
-    border-radius: 10px;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+body.homepage-body { /* Applied to homepage body tag */
+    padding-top: 0 !important; /* Override global padding for full-screen hero */
+    display: block !important; /* Override display:flex from global body for this page */
+    min-height: 100%; /* Ensure html and body are 100% for absolute footer */
 }
 
-.bike-detail-header {
+.homepage-hero {
+    position: relative;
+    height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    padding-bottom: 20px; /* Added padding */
-    border-bottom: 1px solid #333; /* Separator line */
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
 }
 
-.bike-title h1 {
-    font-size: 2.8em; /* Slightly adjusted font size */
-    margin: 0;
-    color: #f8f8f8;
+.homepage-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -10;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    filter: brightness(0.6) blur(2px);
 }
 
-.bike-image { /* This class is likely for the bike itself on the detail page */
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+.hero-content {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 30px 40px;
     border-radius: 10px;
-    border: 3px solid #333; /* Added border */
+    max-width: 800px;
 }
 
-/* For a potential layout on the detail page */
-.detail-columns-wrapper {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 30px; /* Space between columns */
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
-.left-column, .right-column {
-    flex: 1;
-    min-width: 300px; /* Minimum width before wrapping */
-    /* padding: 20px; -- Removed, padding is on inner elements */
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
 }
 
-.key-feature, .overall-score, .price, .description, .specifications {
-    background-color: #2a2a2a; /* Darker elements within the container */
-    border-radius: 8px;
-    margin-bottom: 20px; /* Increased margin */
-    padding: 20px; /* Increased padding */
-}
-
-.key-feature h3, .overall-score h3, .price h3, .description h3, .specifications h3 {
-    color: #e03e3e; /* Accent color for subheadings */
-    margin-top: 0; /* Remove default top margin for h3 */
-    margin-bottom: 15px; /* Spacing below subheading */
-    padding-bottom: 10px; /* Spacing */
-    border-bottom: 1px solid #444; /* Separator for subheadings */
-}
-
-/* Button for detail page */
-.back-to-rankings {
-    display: inline-block; /* Proper button behavior */
+.hero-content .btn-primary-custom { /* Custom class for hero button */
+    font-size: 1.1rem;
+    padding: 12px 28px;
     background-color: #e03e3e;
+    border-color: #e03e3e;
     color: #fff;
-    padding: 12px 25px; /* Adjusted padding */
-    border: none;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    text-decoration: none; /* If used as an anchor */
-    transition: background-color 0.3s, transform 0.2s;
-    margin-top: 20px; /* Spacing above the button */
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.hero-content .btn-primary-custom:hover {
+    background-color: #c53232;
+    border-color: #c53232;
+    color: #fff;
+}
+.hero-content .btn-outline-light-custom { /* For "View Full Gallery" button */
+    font-size: 1.1rem;
+    padding: 12px 28px; /* Match custom primary button */
 }
 
-.back-to-rankings:hover {
-    background-color: #d12c2c;
-    transform: translateY(-2px); /* Slight lift on hover */
+/* Homepage Navbar Styles */
+.navbar#mainNavHomepage {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: background-color 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
 }
 
-/* Text styling for detail page */
-.biography p, .additional-features ul {
-    font-size: 1.1em; /* Adjusted for readability */
-    color: #b5b5b5;
-    line-height: 1.6; /* Improved line spacing */
+.navbar#mainNavHomepage .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
 }
 
-.additional-features ul {
-    list-style-type: disc; /* Standard bullet points */
-    padding-left: 20px; /* Indentation for list */
+.navbar#mainNavHomepage .navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.075em;
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s ease-in-out;
 }
 
-/* Video will be blurred and fixed */
-.video-container {
+.navbar#mainNavHomepage .navbar-nav .nav-link:hover,
+.navbar#mainNavHomepage .navbar-nav .nav-link.active {
+    color: #ffffff;
+}
+
+.navbar#mainNavHomepage.bg-dark-scrolled {
+    background-color: rgba(20, 20, 20, 0.95) !important; /* Dark, slightly transparent */
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar#mainNavHomepage.bg-transparent {
+    background-color: transparent !important;
+}
+
+/* Media Showcase Styles (used on Homepage) */
+.media-showcase {
+    margin-top: 35px;
+}
+.media-showcase h4 {
+    margin-bottom: 20px;
+    color: #f0f0f0;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.media-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.media-thumbnail {
+    border: 2px solid #555;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+.media-item:hover .media-thumbnail {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(224, 62, 62, 0.6); /* Accent color glow */
+}
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.media-item:hover .play-icon {
+    opacity: 1;
+}
+
+
+/*
+   =========================================================================
+   Leaderboard Page Specific Styles
+   =========================================================================
+*/
+.leaderboard-video-bg-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 350px; /* Adjust height as needed */
-    z-index: -1; /* Ensures video is in the background */
-    overflow: hidden; /* Hide parts of video that extend beyond container */
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
 }
-
-.video-container video {
+.leaderboard-video-bg-container video {
     min-width: 100%;
     min-height: 100%;
     width: auto;
@@ -150,130 +244,223 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: blur(5px); /* Blur effect */
-    opacity: 0.7; /* Slight transparency */
+    filter: blur(4px) brightness(0.5);
+    opacity: 0.9;
 }
-
-/* Transparent background for the table container */
-.bike-info-container {
-    background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
+.leaderboard-table-container {
+    background-color: rgba(10, 10, 10, 0.75);
     padding: 30px;
-    color: white;
     border-radius: 10px;
-    z-index: 1; /* Ensure it's above the video */
-    margin-top: 300px; /* Pushes it down below the video area, adjust as needed */
+    margin-top: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    color: white;
+}
+.leaderboard-table-container .table-custom { color: #e0e0e0; }
+.leaderboard-table-container .table-custom thead th { background-color: #23272b; color: #ffffff; border-bottom: 2px solid #343a40; }
+.leaderboard-table-container .table-custom tbody tr { border-bottom: 1px solid #2a2e33; }
+.leaderboard-table-container .table-custom tbody tr:hover { background-color: rgba(255, 255, 255, 0.07); }
+.leaderboard-table-container .table-custom img.rider-image-thumbnail { max-width: 75px; height: auto; border-radius: 4px; border: 1px solid #454d55; }
+
+/*
+   =========================================================================
+   Modal Styles (Dark Theme)
+   =========================================================================
+*/
+.modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
+.modal-header {
+    border-bottom: 1px solid #333;
+}
+.modal-header .btn-close { /* This will style Bootstrap's default close button */
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+.modal-footer {
+    border-top: 1px solid #333;
 }
 
-/* Mobile responsiveness for Detail Page */
+
+/*
+   =========================================================================
+   Rider Detail Page Specific Styles
+   =========================================================================
+*/
+.rider-detail-content-card {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+    margin-bottom: 25px;
+}
+.rider-detail-content-card h3, .rider-detail-content-card h4 {
+    color: #e03e3e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+}
+.rider-detail-content-card h3:first-child, .rider-detail-content-card h4:first-child { margin-top: 0; }
+.rider-detail-content-card ul { list-style-type: none; padding-left: 0; }
+.rider-detail-content-card ul li { padding: 6px 0; border-bottom: 1px solid #2f2f2f; }
+.rider-detail-content-card ul li:last-child { border-bottom: none; }
+
+.rider-image-main {
+    border-radius: 10px;
+    border: 2px solid #444;
+    max-height: 500px;
+    object-fit: cover;
+    width: 100%;
+}
+.rider-detail-tabs .nav-tabs .nav-link {
+    color: #b5b5b5;
+    border-color: #333 #333 #1e1e1e;
+    background-color: #2a2a2a;
+}
+.rider-detail-tabs .nav-tabs .nav-link.active {
+    color: #e03e3e;
+    background-color: #1e1e1e;
+    border-color: #444 #444 #1e1e1e;
+    font-weight: bold;
+}
+.rider-detail-tabs .tab-content {
+    background-color: #242424;
+    padding: 20px;
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    color: #b5b5b5;
+}
+.back-to-link-btn { /* General button for "Back to..." links */
+    display: inline-block;
+    background-color: #e03e3e;
+    border-color: #e03e3e; /* For consistency with Bootstrap btn */
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.back-to-link-btn:hover {
+    background-color: #c53232;
+    border-color: #c53232;
+    color: #fff;
+}
+
+
+/*
+   =========================================================================
+   Season Page Specific Styles
+   =========================================================================
+*/
+.season-page-header { /* Used on season.html for the 'Our Seasons' title */
+    color: #ffffff;
+    padding: 20px 0 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+/* .season-page-header h1 is covered by .page-main-title if that class is used */
+
+.season-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.season-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.season-card .season-image {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+.season-card .card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+}
+.season-card .card-title {
+    color: #e03e3e;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+.season-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    color: #b5b5b5;
+}
+.season-card .btn-primary {
+    background-color: #e03e3e;
+    border-color: #e03e3e;
+}
+.season-card .btn-primary:hover {
+    background-color: #c53232;
+    border-color: #c53232;
+}
+
+
+/*
+   =========================================================================
+   Mobile Responsiveness (Consolidated & Refined)
+   =========================================================================
+*/
 @media (max-width: 768px) {
-    body {
+    body:not(.homepage-body) {
         padding-top: 56px; /* Adjust for potentially smaller navbar on mobile */
     }
 
-    .bike-detail-container {
-        width: 95%; /* Slightly more width on mobile */
+    .page-main-title {
+        font-size: 2.2em;
+    }
+
+    /* Homepage Hero Content Mobile */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    .hero-content .btn-primary-custom,
+    .hero-content .btn-outline-light-custom {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    .media-showcase .col-lg-3.col-md-4.col-sm-6.col-6 { /* For homepage media showcase */
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+
+    /* Rider Detail Page Mobile */
+    .rider-detail-content-card {
         padding: 20px;
-        margin-top: 20px;
+    }
+    .rider-image-main {
+        max-height: 300px;
+    }
+    /* Add more mobile specific overrides for detail page if needed */
+
+    /* Leaderboard page table on mobile might need font size adjustments or horizontal scroll indication */
+    .leaderboard-table-container .table-custom {
+        font-size: 0.85rem; /* Smaller font for table on mobile */
+    }
+    .leaderboard-table-container .table-custom img.rider-image-thumbnail {
+        max-width: 60px;
     }
 
-    .bike-detail-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center; /* Center title on mobile */
+    /* Season cards on mobile (Bootstrap columns will handle stacking) */
+    .season-card .card-body {
+        min-height: auto; /* Allow natural height on mobile */
     }
-
-    .bike-title h1 {
-        font-size: 2.2em; /* Adjust for mobile */
-        margin-bottom: 15px; /* Space between title and image */
-    }
-
-    .bike-image {
-        width: 100%; /* Full width image container */
-        max-width: 280px; /* Max width for the image */
-        height: auto; /* Maintain aspect ratio */
-        margin-bottom: 20px; /* Space below image */
-    }
-
-    .detail-columns-wrapper {
-        flex-direction: column; /* Stack columns on mobile */
-        gap: 0; /* Remove gap when stacked, margin is on elements */
-    }
-
-    .left-column, .right-column {
-        min-width: 100%; /* Full width for columns on mobile */
-        padding: 0; /* Reset padding, handled by inner elements */
-    }
-
-    .key-feature, .overall-score, .price, .description, .specifications {
-        padding: 15px;
-    }
-
-    .back-to-rankings {
-        width: 100%; /* Full width button on mobile */
-        text-align: center;
-        padding: 15px;
-    }
-
-    /* Styles for Media Showcase in Hero Content */
-    .media-showcase {
-         margin-top: 35px;
-    }
-    .media-showcase h4 {
-         margin-bottom: 20px;
-        color: #f0f0f0;
-        font-size: 1.4rem; /* Slightly larger heading */
-        font-weight: 500;
-    }
-
-    .media-item {
-        display: block;
-        position: relative; /* For play icon positioning */
-        overflow: hidden; /* Ensures rounded corners clip the image correctly */
-        border-radius: 8px; /* Match thumbnail rounding */
-    }
-
-    .media-thumbnail {
-        border: 2px solid #777; /* Slightly more prominent border */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        width: 100%;
-        aspect-ratio: 16 / 10; /* Maintain aspect ratio for thumbnails */
-        object-fit: cover;
-    }
-
-    .media-item:hover .media-thumbnail {
-        transform: scale(1.08); /* Slightly larger scale on hover */
-        box-shadow: 0 0 20px rgba(224, 62, 62, 0.6); /* Accent color glow */
-    }
-
-    .play-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2.5rem; /* Adjust size as needed */
-        color: rgba(255, 255, 255, 0.9);
-        text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
-        pointer-events: none;
-        opacity: 0.8;
-        transition: opacity 0.3s ease;
-    }
-
-    .media-item:hover .play-icon {
-        opacity: 1;
-    }
-
-    /* Styling for Modals */
-    .modal-content.bg-dark .modal-body img,
-    .modal-content.bg-dark .modal-body video {
-        max-height: 80vh;
-        object-fit: contain; /* Ensures the whole image/video is visible */
-    }
-
-    .btn-close-white { /* Ensure Bootstrap 5's white close button is used */
-        filter: none; /* Reset filter if one was globally applied */
-    }
-
-    .modal-header.border-secondary {
-        border-bottom-color: #444 !important; /* Darker border for modal header */
+    .season-card .season-image {
+        height: 180px;
     }
 }

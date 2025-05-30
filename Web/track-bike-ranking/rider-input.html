@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Biker Information</title>
+    <title>Input Rider Information</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container mt-4">
-        <h2>Enter Biker Information</h2>
+        <h2>Enter Rider Information</h2>
 
-        <!-- Form to input biker information -->
-        <form id="bikerForm">
+        <!-- Form to input Rider information -->
+        <form id="RiderForm">
             <div class="mb-3">
                 <label for="rank" class="form-label">Rank</label>
                 <input type="number" class="form-control" id="rank" required>
             </div>
             <div class="mb-3">
-                <label for="bikerName" class="form-label">Biker Name</label>
-                <input type="text" class="form-control" id="bikerName" required>
+                <label for="RiderName" class="form-label">Rider Name</label>
+                <input type="text" class="form-control" id="RiderName" required>
             </div>
             <div class="mb-3">
-                <label for="bikerImageFile" class="form-label">Biker Image</label>
-                <input type="file" class="form-control" id="bikerImageFile" accept="image/*" required>
+                <label for="RiderImageFile" class="form-label">Rider Image</label>
+                <input type="file" class="form-control" id="RiderImageFile" accept="image/*" required>
             </div>
             <div class="mb-3">
                 <label for="bikeImageFile" class="form-label">Bike Image</label>
@@ -35,7 +35,7 @@
                 <input type="text" class="form-control" id="bikeBrand" required>
             </div>
             <div class="mb-3">
-                <label for="age" class="form-label">Biker Age</label>
+                <label for="age" class="form-label">Rider Age</label>
                 <input type="number" class="form-control" id="age" required>
             </div>
             <div class="mb-3">
@@ -57,28 +57,28 @@
 
             // Get form values
             const rank = document.getElementById("rank").value;
-            const bikerName = document.getElementById("bikerName").value;
+            const RiderName = document.getElementById("RiderName").value;
             const bikeBrand = document.getElementById("bikeBrand").value;
             const age = document.getElementById("age").value;
             const keyFeature = document.getElementById("keyFeature").value;
             const overallScore = document.getElementById("overallScore").value;
 
             // Get image files
-            const bikerImageFile = document.getElementById("bikerImageFile").files[0];
+            const RiderImageFile = document.getElementById("RiderImageFile").files[0];
             const bikeImageFile = document.getElementById("bikeImageFile").files[0];
 
             // FileReader instances for reading images
-            const readerBikerImage = new FileReader();
+            const readerRiderImage = new FileReader();
             const readerBikeImage = new FileReader();
 
-            // When the biker image is read
-            readerBikerImage.onloadend = function () {
+            // When the Rider image is read
+            readerRiderImage.onloadend = function () {
                 // When the bike image is read
                 readerBikeImage.onloadend = function () {            // Create new bike object
                     const newBike = {
                         rank: parseInt(rank),
-                        bikerName: bikerName,
-                        bikerImage: readerBikerImage.result, // Store biker image as Base64
+                        RiderName: RiderName,
+                        RiderImage: readerRiderImage.result, // Store Rider image as Base64
                         bikeImage: readerBikeImage.result, // Store bike image as Base64
                         bikeBrand: bikeBrand,
                         age: parseInt(age),
@@ -116,9 +116,9 @@
                 }
             };
 
-            // Read the biker image
-            if (bikerImageFile) {
-                readerBikerImage.readAsDataURL(bikerImageFile);
+            // Read the Rider image
+            if (RiderImageFile) {
+                readerRiderImage.readAsDataURL(RiderImageFile);
             }
         });
     </script>
