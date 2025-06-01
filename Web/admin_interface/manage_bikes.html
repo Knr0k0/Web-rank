@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Xe Đạp - Admin</title>
+    <link rel="stylesheet" href="/admin-assets/css/admin_style.css">
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Trang Quản Trị</h1>
+        <nav>
+            <a href="/admin/dashboard">Tổng Quan</a>
+            <a href="/admin/manage-bikes">Quản Lý Xe Đạp</a>
+            <a href="/admin/manage-products">Quản Lý Sản Phẩm (Ví dụ)</a>
+            <a href="/admin/logout" class="btn btn-logout">Đăng Xuất</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section>
+            <h2>Thêm Xe Đạp Mới</h2>
+            <form id="addBikeForm">
+                <div class="form-group">
+                    <label for="rank">Hạng:</label>
+                    <input type="number" id="rank" name="rank" required>
+                </div>
+                <div class="form-group">
+                    <label for="bikerName">Tên Vận Động Viên:</label>
+                    <input type="text" id="bikerName" name="bikerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bikerImage">Ảnh Vận Động Viên (Base64 hoặc URL):</label>
+                    <textarea id="bikerImage" name="bikerImage" rows="3" placeholder="Dán chuỗi Base64 hoặc URL hình ảnh"></textarea>
+                    <input type="file" id="bikerImageFile" accept="image/*" class="image-upload-trigger" data-target="bikerImage">
+                    <img id="bikerImagePreview" src="#" alt="Xem trước ảnh VĐV" class="image-preview" style="display:none;"/>
+                </div>
+                <div class="form-group">
+                    <label for="bikeImage">Ảnh Xe Đạp (Base64 hoặc URL):</label>
+                    <textarea id="bikeImage" name="bikeImage" rows="3" placeholder="Dán chuỗi Base64 hoặc URL hình ảnh"></textarea>
+                    <input type="file" id="bikeImageFile" accept="image/*" class="image-upload-trigger" data-target="bikeImage">
+                    <img id="bikeImagePreview" src="#" alt="Xem trước ảnh xe đạp" class="image-preview" style="display:none;"/>
+                </div>
+                <div class="form-group">
+                    <label for="bikeBrand">Thương Hiệu Xe:</label>
+                    <input type="text" id="bikeBrand" name="bikeBrand">
+                </div>
+                <div class="form-group">
+                    <label for="age">Tuổi:</label>
+                    <input type="number" id="age" name="age">
+                </div>
+                <div class="form-group">
+                    <label for="keyFeature">Tính Năng Nổi Bật:</label>
+                    <input type="text" id="keyFeature" name="keyFeature">
+                </div>
+                <div class="form-group">
+                    <label for="overallScore">Điểm Tổng Quan:</label>
+                    <input type="number" id="overallScore" name="overallScore">
+                </div>
+                <button type="submit" class="btn">Thêm Xe Đạp</button>
+                <p id="addBikeMessage" style="display:none;"></p>
+            </form>
+        </section>
+
+        <section>
+            <h2>Danh Sách Xe Đạp Hiện Có</h2>
+            <div id="bikeListContainer">
+                <p>Đang tải danh sách xe đạp...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="admin-footer">
+        <p>&copy; <span id="currentYear"></span> Trang Quản Trị Web-Rank. Bảo lưu mọi quyền.</p>
+    </footer>
+
+    <script src="/admin-assets/js/admin_script.js"></script>
+</body>
+</html>
