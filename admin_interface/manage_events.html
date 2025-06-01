@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sự Kiện - Admin</title>
+    <link rel="stylesheet" href="/admin-assets/css/admin_style.css">
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Trang Quản Trị</h1>
+        <nav>
+            <a href="/admin/dashboard">Tổng Quan</a>
+            <a href="/admin/manage-bikes">Quản Lý Xe Đạp</a>
+            <a href="/admin/manage-events">Quản Lý Sự Kiện</a>
+            <a href="/admin/manage-products">Quản Lý Sản Phẩm</a>
+            <a href="/admin/logout" class="btn btn-logout">Đăng Xuất</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section>
+            <h2>Thêm Sự Kiện Mới</h2>
+            <form id="addEventForm">
+                <div class="form-group">
+                    <label for="eventName">Tên Sự Kiện:</label>
+                    <input type="text" id="eventName" name="eventName" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Ngày Diễn Ra:</label>
+                    <input type="date" id="eventDate" name="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventLocation">Địa Điểm:</label>
+                    <input type="text" id="eventLocation" name="eventLocation">
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Mô Tả Sự Kiện:</label>
+                    <textarea id="eventDescription" name="eventDescription" rows="5" placeholder="Nhập mô tả chi tiết về sự kiện..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventImage">Ảnh Sự Kiện (Base64 hoặc URL):</label>
+                    <textarea id="eventImage" name="eventImage" rows="3" placeholder="Dán chuỗi Base64 hoặc URL hình ảnh"></textarea>
+                    <input type="file" id="eventImageFile" accept="image/*" class="image-upload-trigger" data-target="eventImage">
+                    <img id="eventImagePreview" src="#" alt="Xem trước ảnh sự kiện" class="image-preview" style="display:none;"/>
+                </div>
+                 <div class="form-group">
+                    <label for="eventType">Loại Hình Sự Kiện:</label>
+                    <input type="text" id="eventType" name="eventType" placeholder="Ví dụ: Criterium, Alleycat, Track Day...">
+                </div>
+                <button type="submit" class="btn">Thêm Sự Kiện</button>
+                <p id="addEventMessage" style="display:none;"></p>
+            </form>
+        </section>
+
+        <section>
+            <h2>Danh Sách Sự Kiện Hiện Có</h2>
+            <div id="eventListContainer">
+                <p>Chưa có sự kiện nào được thêm hoặc chức năng tải danh sách đang được phát triển.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="admin-footer">
+        <p>&copy; <span id="currentYear"></span> Trang Quản Trị Web-Rank. Bảo lưu mọi quyền.</p>
+    </footer>
+
+    <script src="/admin-assets/js/admin_script.js"></script>
+</body>
+</html>
