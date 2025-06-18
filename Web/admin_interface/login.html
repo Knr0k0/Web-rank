@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Admin</title>
+    <link rel="stylesheet" href="/admin-assets/css/admin_style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Đăng Nhập Trang Quản Trị</h2>
+        <form id="loginForm" action="/admin/login" method="POST">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Đăng Nhập</button>
+            <p id="login-error-message" class="error-message" style="display:none;"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Kiểm tra thông tin đăng nhập
+            if (username === 'admin' && password === 'supersecretpassword123') {
+                // Đăng nhập thành công, chuyển hướng đến trang quản trị
+                window.location.href = '/admin/dashboard';
+            } else {
+                // Hiển thị thông báo lỗi
+                const errorMessage = document.getElementById('login-error-message');
+                errorMessage.textContent = 'Tên đăng nhập hoặc mật khẩu không đúng.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
