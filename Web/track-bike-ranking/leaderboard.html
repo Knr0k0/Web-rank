@@ -1,119 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reaper Crit - Leaderboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <title>Bảng Xếp Hạng - Reaper Crit</title>
+    <meta name="description" content="Bảng xếp hạng vận động viên chính thức của giải đua xe đạp Reaper Crit, cập nhật liên tục cho các lứa tuổi và hạng mục.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+    <script src="js/leaderboard.js" defer></script>
+
+    <style>
+        .video-background-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+        .video-background-wrapper video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -2;
+            object-fit: cover;
+        }
+        .video-background-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        .content-container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-black">
         <div class="container">
-            <a class="navbar-brand" href="leaderboard.html">
-                <img src="img/logo/1111.png" width="120" alt="Reaper Crit Logo"> Reaper Crit
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo/1111.png" width="120" alt="Logo của Reaper Crit"> Reaper Crit
             </a>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavLeaderboard"
-                aria-controls="navbarNavLeaderboard" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarNavLeaderboard">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Xếp Hạng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="leaderboard.html">Leaderboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="season.html">Season</a>
+                        <a class="nav-link" href="#">Giới Thiệu</a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
         </div>
     </nav>
 
-    <div class="leaderboard-video-bg-container">
-        <video autoplay loop muted playsinline>
-            <source src="img/video/AZR 4.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+    <header class="video-background-wrapper text-center">
+        <video autoplay loop muted playsinline poster="img/video_poster.jpg">
+            <source src="img/video/AZR-4.webm" type="video/webm">
+            <source src="img/video/AZR-4.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
         </video>
-    </div>
+        <div class="content-container">
+            <h1 class="display-4">Bảng Xếp Hạng Vận Động Viên</h1>
+            <p class="lead">Dữ liệu được cập nhật liên tục.</p>
+        </div>
+    </header>
 
-    <div class="page-content-wrapper">
-        <div class="container mt-4">
-            <h1 class="page-main-title">Top Track Riders</h1>
-
-            <div class="action-button-container admin-only" data-display-style="text-align: center">
-                <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#addRiderModal">
-                    + Add New Rider
+    <main class="container my-5">
+        <div class="row mb-4 gy-3 align-items-center">
+            <div class="col-md-6">
+                <label for="searchInput" class="visually-hidden">Tìm kiếm</label>
+                <input type="search" id="searchInput" class="form-control" placeholder="Tìm theo tên hoặc CLB...">
+            </div>
+            <div class="col-md-6 text-md-end">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRiderModal">
+                    + Thêm Vận Động Viên
                 </button>
             </div>
+        </div>
 
-            <div class="table-responsive leaderboard-table-container">
-                <table class="table table-custom align-middle">
-                    <thead>
+        <section class="category-section mb-5" aria-labelledby="heading-tren-18">
+            <h2 id="heading-tren-18" class="category-header">🥇 Lứa tuổi Trên 18</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
                         <tr>
-                            <th scope="col">Rank</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Rider Name</th>
-                            <th scope="col">Team/Brand</th>
-                            <th scope="col">Key Feature</th>
-                            <th scope="col">Overall Score</th>
-                            <th scope="col">Details</th>
+                            <th scope="col">Hạng</th>
+                            <th scope="col">Vận Động Viên</th>
+                            <th scope="col">CLB</th>
+                            <th scope="col">Điểm</th>
+                            <th scope="col">Chi Tiết</th>
                         </tr>
                     </thead>
-                    <tbody id="bike-ranking-body">
-                        </tbody>
+                    <tbody id="table-body-tren-18"></tbody>
                 </table>
             </div>
+        </section>
+        
+        <section class="category-section mb-5" aria-labelledby="heading-duoi-18">
+            <h2 id="heading-duoi-18" class="category-header">🥈 Lứa tuổi Dưới 18</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Hạng</th>
+                            <th scope="col">Vận Động Viên</th>
+                            <th scope="col">CLB</th>
+                            <th scope="col">Điểm</th>
+                            <th scope="col">Chi Tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body-duoi-18"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="category-section" aria-labelledby="heading-ca-nhan">
+            <h2 id="heading-ca-nhan" class="category-header">🥉 Cá Nhân Tính Giờ</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                     <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Hạng</th>
+                            <th scope="col">Vận Động Viên</th>
+                            <th scope="col">CLB</th>
+                            <th scope="col">Thời gian</th>
+                            <th scope="col">Chi Tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body-ca-nhan"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 text-white text-center">
+        <div class="container">
+            <p class="mb-0">&copy; <span id="current-year">2025</span> Reaper Crit. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <div class="modal fade" id="addRiderModal" tabindex="-1" aria-labelledby="addRiderModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addRiderModalLabel">Enter Rider Information</h5>
+                    <h5 class="modal-title" id="addRiderModalLabel">Thêm Vận Động Viên Mới</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="riderFormModal">
-                        <div class="mb-3">
-                            <label for="rankModal" class="form-label">Rank</label>
-                            <input type="number" class="form-control" id="rankModal" required>
+                    <form id="riderFormModal" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="riderNameModal" class="form-label">Tên Vận Động Viên</label>
+                                <input type="text" class="form-control" id="riderNameModal" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="riderCategoryModal" class="form-label">Hạng Mục</label>
+                                <select class="form-select" id="riderCategoryModal" required>
+                                    <option value="" selected disabled>-- Chọn hạng mục --</option>
+                                    <option value="tren18">Trên 18</option>
+                                    <option value="duoi18">Dưới 18</option>
+                                    <option value="canhan">Cá nhân tính giờ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="teamBrandModal" class="form-label">CLB / Đội</label>
+                                <input type="text" class="form-control" id="teamBrandModal" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="ageModal" class="form-label">Tuổi</label>
+                                <input type="number" class="form-control" id="ageModal" required>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="riderNameModal" class="form-label">Rider Name</label>
-                            <input type="text" class="form-control" id="riderNameModal" required>
+                            <label for="riderImageFileModal" class="form-label">Ảnh Vận Động Viên</label>
+                            <input type="file" class="form-control" id="riderImageFileModal" accept="image/*">
                         </div>
-                        <div class="mb-3">
-                            <label for="riderImageFileModal" class="form-label">Rider Image</label>
-                            <input type="file" class="form-control" id="riderImageFileModal" accept="image/*" required>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Thêm Vận Động Viên</button>
                         </div>
-                        <div class="mb-3">
-                            <label for="bikeImageFileModal" class="form-label">Bike Image</label>
-                            <input type="file" class="form-control" id="bikeImageFileModal" accept="image/*" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="bikeBrandModal" class="form-label">Bike Brand/Team</label>
-                            <input type="text" class="form-control" id="bikeBrandModal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="ageModal" class="form-label">Rider Age</label>
-                            <input type="number" class="form-control" id="ageModal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="keyFeatureModal" class="form-label">Key Feature</label>
-                            <input type="text" class="form-control" id="keyFeatureModal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="overallScoreModal" class="form-label">Overall Score</label>
-                            <input type="number" class="form-control" id="overallScoreModal" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Rider</button>
                     </form>
                 </div>
             </div>
@@ -124,40 +213,33 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="viewRiderDetailModalLabel">Rider Details</h5>
+                    <h5 class="modal-title" id="viewRiderDetailModalLabel">Chi Tiết Vận Động Viên</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-5">
-                                <div class="rider-images-container">
-                                     <img src="" id="detailRiderImage" class="img-fluid" alt="Rider Image" loading="lazy">
-                                     <img src="" id="detailBikeImageModal" class="img-fluid" alt="Bike Image" loading="lazy">
-                                </div>
+                            <div class="col-md-5 text-center">
+                                 <img src="" id="detailRiderImage" class="img-fluid rounded mb-3" alt="Rider Image" loading="lazy">
                             </div>
                             <div class="col-md-7">
-                                <h3 id="detailRiderName" class="mb-3" style="color: #e03e3e;"></h3>
-                                <div class="detail-section">
-                                    <h6>Team/Brand:</h6>
-                                    <p id="detailTeamBrand"></p>
-                                </div>
-                                <div class="detail-section">
-                                    <h6>Age:</h6>
-                                    <p id="detailAge"></p>
-                                </div>
-                                <div class="detail-section">
-                                    <h6>Key Feature:</h6>
-                                    <p id="detailKeyFeature"></p>
-                                </div>
-                                <div class="detail-section">
-                                    <h6>Overall Score:</h6>
-                                    <p id="detailOverallScore" class="fw-bold"></p>
-                                </div>
-                                <div class="detail-section">
-                                    <h6>Rank:</h6>
-                                    <p id="detailRank"></p>
-                                </div>
+                                <h3 id="detailRiderName" class="mb-3"></h3>
+                                <dl class="row">
+                                    <dt class="col-sm-4">CLB / Đội:</dt>
+                                    <dd class="col-sm-8" id="detailTeamBrand"></dd>
+
+                                    <dt class="col-sm-4">Tuổi:</dt>
+                                    <dd class="col-sm-8" id="detailAge"></dd>
+
+                                    <dt class="col-sm-4">Hạng Mục:</dt>
+                                    <dd class="col-sm-8" id="detailCategory"></dd>
+
+                                    <dt class="col-sm-4">Hạng:</dt>
+                                    <dd class="col-sm-8" id="detailRank"></dd>
+
+                                    <dt class="col-sm-4">Điểm / Thời Gian:</dt>
+                                    <dd class="col-sm-8 fw-bold" id="detailScore"></dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -165,15 +247,5 @@
             </div>
         </div>
     </div>
-
-    <footer class="styled-footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> Reaper Crit. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/leaderboard.js" defer></script>
 </body>
 </html>
