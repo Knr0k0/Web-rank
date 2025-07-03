@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Bảng Xếp Hạng - Reaper Crit</title>
-    <meta name="description" content="Bảng xếp hạng vận động viên chính thức của giải đua xe đạp Reaper Crit, cập nhật liên tục cho các lứa tuổi và hạng mục.">
+    <title>Leaderboard - Reaper Crit</title>
+    <meta name="description" content="Official Rider leaderboard for the Reaper Crit cycling race, continuously updated for all age groups and categories.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -57,7 +57,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-black">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="img/logo/1111.png" width="120" alt="Logo của Reaper Crit"> Reaper Crit
+                <img src="img/logo/1111.png" width="120" alt="Reaper Crit Logo"> Reaper Crit
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -65,10 +65,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Xếp Hạng</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Leaderboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Giới Thiệu</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
             </div>
@@ -79,85 +79,85 @@
         <video autoplay loop muted playsinline poster="img/video_poster.jpg">
             <source src="img/video/AZR-4.webm" type="video/webm">
             <source src="img/video/AZR-4.mp4" type="video/mp4">
-            Trình duyệt của bạn không hỗ trợ video.
+            Your browser does not support the video tag.
         </video>
         <div class="content-container">
-            <h1 class="display-4">Bảng Xếp Hạng Vận Động Viên</h1>
-            <p class="lead">Dữ liệu được cập nhật liên tục.</p>
+            <h1 class="display-4">Rider Leaderboard</h1>
+            <p class="lead">Data updated continuously.</p>
         </div>
     </header>
 
     <main class="container my-5">
         <div class="row mb-4 gy-3 align-items-center">
             <div class="col-md-6">
-                <label for="searchInput" class="visually-hidden">Tìm kiếm</label>
-                <input type="search" id="searchInput" class="form-control" placeholder="Tìm theo tên hoặc CLB...">
+                <label for="searchInput" class="visually-hidden">Search</label>
+                <input type="search" id="searchInput" class="form-control" placeholder="Search by name or team...">
             </div>
             <div class="col-md-6 text-md-end">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRiderModal">
-                    + Thêm Vận Động Viên
+                    + Add Rider
                 </button>
             </div>
         </div>
 
-        <section class="category-section mb-5" aria-labelledby="heading-tren-18">
-            <h2 id="heading-tren-18" class="category-header">🥇 Lứa tuổi Trên 18</h2>
+        <section class="category-section mb-5" aria-labelledby="heading-over-18">
+            <h2 id="heading-over-18" class="category-header">🥇 Over 18 Division</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-hover align-middle">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col">Hạng</th>
-                            <th scope="col">Vận Động Viên</th>
-                            <th scope="col">CLB</th>
-                            <th scope="col">Điểm</th>
-                            <th scope="col">Chi Tiết</th>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Rider</th>
+                            <th scope="col">Team</th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Details</th>
                         </tr>
                     </thead>
-                    <tbody id="table-body-tren-18"></tbody>
+                    <tbody id="table-body-over-18"></tbody>
                 </table>
             </div>
         </section>
         
-        <section class="category-section mb-5" aria-labelledby="heading-duoi-18">
-            <h2 id="heading-duoi-18" class="category-header">🥈 Lứa tuổi Dưới 18</h2>
+        <section class="category-section mb-5" aria-labelledby="heading-under-18">
+            <h2 id="heading-under-18" class="category-header">🥈 Under 18 Division</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-hover align-middle">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col">Hạng</th>
-                            <th scope="col">Vận Động Viên</th>
-                            <th scope="col">CLB</th>
-                            <th scope="col">Điểm</th>
-                            <th scope="col">Chi Tiết</th>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Rider</th>
+                            <th scope="col">Team</th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Details</th>
                         </tr>
                     </thead>
-                    <tbody id="table-body-duoi-18"></tbody>
+                    <tbody id="table-body-under-18"></tbody>
                 </table>
             </div>
         </section>
 
-        <section class="category-section" aria-labelledby="heading-ca-nhan">
-            <h2 id="heading-ca-nhan" class="category-header">🥉 Cá Nhân Tính Giờ</h2>
+        <section class="category-section" aria-labelledby="heading-itt">
+            <h2 id="heading-itt" class="category-header">🥉 Individual Time Trial</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-hover align-middle">
                      <thead class="table-dark">
                         <tr>
-                            <th scope="col">Hạng</th>
-                            <th scope="col">Vận Động Viên</th>
-                            <th scope="col">CLB</th>
-                            <th scope="col">Thời gian</th>
-                            <th scope="col">Chi Tiết</th>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Rider</th>
+                            <th scope="col">Team</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Details</th>
                         </tr>
                     </thead>
-                    <tbody id="table-body-ca-nhan"></tbody>
+                    <tbody id="table-body-itt"></tbody>
                 </table>
             </div>
         </section>
     </main>
 
-    <footer class="py-4 text-white text-center">
+    <footer class="py-4 bg-dark text-white text-center">
         <div class="container">
-            <p class="mb-0">&copy; <span id="current-year">2025</span> Reaper Crit. All rights reserved.</p>
+            <p class="mb-0">&copy; <span id="current-year"></span> Reaper Crit. All rights reserved.</p>
         </div>
     </footer>
 
@@ -165,43 +165,43 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addRiderModalLabel">Thêm Vận Động Viên Mới</h5>
+                    <h5 class="modal-title" id="addRiderModalLabel">Add New Rider</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="riderFormModal" novalidate>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="riderNameModal" class="form-label">Tên Vận Động Viên</label>
+                                <label for="riderNameModal" class="form-label">Rider Name</label>
                                 <input type="text" class="form-control" id="riderNameModal" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="riderCategoryModal" class="form-label">Hạng Mục</label>
+                                <label for="riderCategoryModal" class="form-label">Category</label>
                                 <select class="form-select" id="riderCategoryModal" required>
-                                    <option value="" selected disabled>-- Chọn hạng mục --</option>
-                                    <option value="tren18">Trên 18</option>
-                                    <option value="duoi18">Dưới 18</option>
-                                    <option value="canhan">Cá nhân tính giờ</option>
+                                    <option value="" selected disabled>-- Select a category --</option>
+                                    <option value="over18">Over 18</option>
+                                    <option value="under18">Under 18</option>
+                                    <option value="itt">Individual Time Trial</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="teamBrandModal" class="form-label">CLB / Đội</label>
+                                <label for="teamBrandModal" class="form-label">Club / Team</label>
                                 <input type="text" class="form-control" id="teamBrandModal" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="ageModal" class="form-label">Tuổi</label>
+                                <label for="ageModal" class="form-label">Age</label>
                                 <input type="number" class="form-control" id="ageModal" required>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="riderImageFileModal" class="form-label">Ảnh Vận Động Viên</label>
+                            <label for="riderImageFileModal" class="form-label">Rider Image</label>
                             <input type="file" class="form-control" id="riderImageFileModal" accept="image/*">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="submit" class="btn btn-primary">Thêm Vận Động Viên</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Rider</button>
                         </div>
                     </form>
                 </div>
@@ -213,7 +213,7 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="viewRiderDetailModalLabel">Chi Tiết Vận Động Viên</h5>
+                    <h5 class="modal-title" id="viewRiderDetailModalLabel">Rider Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -225,19 +225,19 @@
                             <div class="col-md-7">
                                 <h3 id="detailRiderName" class="mb-3"></h3>
                                 <dl class="row">
-                                    <dt class="col-sm-4">CLB / Đội:</dt>
+                                    <dt class="col-sm-4">Club / Team:</dt>
                                     <dd class="col-sm-8" id="detailTeamBrand"></dd>
 
-                                    <dt class="col-sm-4">Tuổi:</dt>
+                                    <dt class="col-sm-4">Age:</dt>
                                     <dd class="col-sm-8" id="detailAge"></dd>
 
-                                    <dt class="col-sm-4">Hạng Mục:</dt>
+                                    <dt class="col-sm-4">Category:</dt>
                                     <dd class="col-sm-8" id="detailCategory"></dd>
 
-                                    <dt class="col-sm-4">Hạng:</dt>
+                                    <dt class="col-sm-4">Rank:</dt>
                                     <dd class="col-sm-8" id="detailRank"></dd>
 
-                                    <dt class="col-sm-4">Điểm / Thời Gian:</dt>
+                                    <dt class="col-sm-4">Score / Time:</dt>
                                     <dd class="col-sm-8 fw-bold" id="detailScore"></dd>
                                 </dl>
                             </div>
